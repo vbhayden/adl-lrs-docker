@@ -27,7 +27,7 @@ To monitor the LRS setup process, you can use:
 ```
 sudo docker logs -f docker_lrs
 ```
-with `CTRL+C` cancelling the log once it reaches the `[uWSGI]` lines.
+with `CTRL+C` cancelling the log once it reaches the `[uWSGI]` lines.  Once complete, the LRS should be visible at `https://localhost`.
 
 
 ### Details
