@@ -2,11 +2,9 @@ Docker Implementation of the ADL LRS
 =================
 Automated Docker installer for the ADL LRS.
 
-The goal of this project is to streamline the installation of the public ADL LRS and further the accessibility of xAPI by reducing the workload required to stand up a private LRS.  
+If you have been struggling to stand up a local version of the ADL LRS, then this might be the place for you.  The goal of this project is to streamline the installation of the public ADL LRS and further the accessibility of xAPI by automating the lengthy steps required to stand one up.  
 
-There were other implementations of this LRS using Docker, but those also *leverage heavily modified forks* of the ADL_LRS repository, making them difficult to update and already out of date with the latest xAPI Spec and Conformance requirements.  
-
-This project uses a direct clone of official ADL repository with a single, minor modification to the `fabfile.py` for the sake of convenience when working with Docker.  *This modification is irrelevant to the xAPI Specification.*
+This project uses a direct clone of official ADL repository with a single, minor modification to the `fabfile.py` for the sake of convenience when working with Docker.
 
 ## Things to Note
 - **This project is in development and should be used with caution.**
