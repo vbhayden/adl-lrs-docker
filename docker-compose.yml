@@ -1,0 +1,55 @@
+version: '3'
+services:
+
+  # Database for LRS statements
+  postgres:
+    restart: always
+    build: 
+      context: postgres
+    ports:
+      - "5432:5432"
+    container_name: docker_postgres
+    # Persist this data between sessions
+    volumes:
+      - ./postgres/data:/var/lib/postgresql/data
+
+  # Required for activity metadata
+  amqp:
+    image: "rabbitmq:3-management"
+    hostname: "rabbit1"
+    environment:
+      RABBITMQ_ERLANG_COOKIE: "SWQOKODSQALRPCLNMEQG"
+      RABBITMQ_DEFAULT_USER: "rabbitmq"
+      RABBITMQ_DEFAULT_PASS: "rabbitmq"
+      RABBITMQ_DEFAULT_VHOST: "/"
+    container_name: docker_rabbit
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+  
+  # The actual ADL LRS service run through uWSGI
+  lrs:
+    restart: always
+    build: 
+      context: lrs
+    ports:
+      - "8000:8000"
+    container_name: docker_lrs
+    links:
+      - postgres
+      - amqp
+  
+  # nginx proxy used to handle LRS traffic
+  nginx:
+    restart: always
+    build: 
+      context: nginx
+    ports:
+      - "80:80"
+      - "443:443"
+    container_name: docker_nginx
+    links:
+      - lrs
+
+
+      
