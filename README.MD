@@ -9,13 +9,15 @@ There were other implementations of this LRS using Docker, but those also *lever
 
 This project uses a direct clone of official ADL repository with a single, minor modification to the `fabfile.py` for the sake of convenience when working with Docker.  *This modification is irrelevant to the xAPI Specification.*
 
-**Do Note:**
+## Things to Note
 - **This project is in development and should be used with caution.**
 - **This project is not directly associated with the ADL Initiative.**
 - **This project DOES NOT include SMTP configuration!**
 - **This project DOES NOT create a Django superuser by default.**
 
-### What's in the box?
+For the Django site admin, this will be created by bashing into the container and setting it up manually.
+
+## What's in the box?
 This project will create Docker containers for the following services:
 - A Django web service (the ADL LRS) with uWSGI.
 - An nginx proxy handling HTTP/HTTPS traffic on ports 80/443
