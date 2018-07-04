@@ -14,7 +14,7 @@ This project uses a direct clone of official ADL repository with a single, minor
 - **This project DOES NOT include SMTP configuration!**
 - **This project DOES NOT create a Django superuser by default.**
 
-For the Django site admin, this will be created by bashing into the container and setting it up manually.
+For the Django site admin, this can be created easily and is outlined below.
 
 ## What's in the box?
 This project will create Docker containers for the following services:
@@ -24,13 +24,16 @@ This project will create Docker containers for the following services:
 - RabbitMQ (enabling Celery and AMQP)
 
 ## How to Use
-As this project is centered around Docker containers, there's very little setup required on the host machine. 
+As this project is centered around Docker, there's very little setup required on the host machine. 
 
 ### TL;DR
 1. `git clone https://github.com/vbhayden/adl-lrs-docker`
 1. `cd adl-lrs-docker`
 1. `sudo ./install-reqs.sh`
 1. `sudo ./rebuild.sh`
+
+(optional) 
+- `sudo ./create-admin.sh` (once the LRS is available)
 
 ### A bit more detail
 Once you clone the repository, move to its root folder.  Here, you'll install all the necessary prerequisites and then run the actual build itself.  
@@ -41,5 +44,11 @@ To monitor the LRS setup process, you can use:
 ```
 sudo docker logs -f docker_lrs
 ```
-with `CTRL+C` cancelling the log once it reaches the `[uWSGI]` lines.  Once complete, the LRS should be visible at `https://localhost`.
+Once complete, the LRS should be visible at `https://localhost`.
 
+### Adding an Admin Account
+When the LRS is available, you may wish to create a superuser for the LRS.  This is done by navigating to the root directory of the project and running:
+```
+sudo ./create-admin.sh
+```
+This user only needs to be created **once**, as the Postgres container will persist through sessions.
