@@ -31,7 +31,7 @@ As this project is centered around Docker, there's very little setup required on
 1. `sudo ./rebuild.sh`
 
 (optional) 
-- `sudo ./create-admin.sh` (once the LRS is available)
+- `sudo ./create-admin.sh` (once the LRS is available, **which can take awhile!**)
 
 ### A bit more detail
 Once you clone the repository, move to its root folder.  Here, you'll install all the necessary prerequisites and then run the actual build itself.  
@@ -45,7 +45,7 @@ sudo docker logs -f docker_lrs
 Once complete, the LRS should be visible at `https://localhost`.
 
 ### Adding an Admin Account
-When the LRS is available, you may wish to create a superuser for the LRS.  This is done by navigating to the root directory of the project and running:
+When the LRS is available (**which can take awhile**), you may wish to create a superuser for the LRS.  This is done by navigating to the root directory of the project and running:
 ```
 sudo ./create-admin.sh
 ```
