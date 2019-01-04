@@ -43,6 +43,19 @@ class Command(BaseCommand):
                     self.stdout.write("Deleted all %s objects from - %s except for the Agents associated with LRS users\n" % (
                         model.__name__, app.name.split('.')[0]))
                 else:
+                    
+                    # Chunking configuration
+                    step = 20000
+                    total = model.objects.count()
+                    steps = total // step
+                    
+                    # Clear in chunks
+                    for i in xrange(steps):
+                        chunk = model.objects.all()[i*step : (i+1)*step]
+                        for entry in chunk:
+                            entry.delete()
+                    
+                    # Clear residuals
                     model.objects.all().delete()
                     self.stdout.write("Deleted all %s objects from - %s\n" %
                                       (model.__name__, app.name.split('.')[0]))
