@@ -51,9 +51,8 @@ class Command(BaseCommand):
                     
                     # Clear in chunks
                     for i in xrange(steps):
-                        chunk = model.objects.all()[i*step : (i+1)*step]
-                        for entry in chunk:
-                            entry.delete()
+                        chunk = model.objects.filter(**{filter: "%s__id__lte=%s" % (model.__name__, i*steps)})
+                        chunk.delete()
                     
                     # Clear residuals
                     model.objects.all().delete()
