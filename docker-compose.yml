@@ -15,6 +15,7 @@ services:
 
   # Required for activity metadata
   amqp:
+    restart: always
     image: "rabbitmq:3-management"
     hostname: "rabbit1"
     environment:
