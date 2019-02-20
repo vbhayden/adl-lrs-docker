@@ -7,7 +7,11 @@ upstream lrs {
 
 server {
     listen 80;
-    server_name localhost;  
+    server_name localhost;      
+    
+    listen 443 ssl;
+    ssl_certificate /etc/nginx/ssl/nginx.crt;
+    ssl_certificate_key /etc/nginx/ssl/nginx.key;
 
     charset utf-8;
 
