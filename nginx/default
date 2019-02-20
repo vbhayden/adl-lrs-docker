@@ -1,9 +1,12 @@
 # The default server
 #
 worker_processes 5;
+worker_rlimit_nofile 100000;
 
 events {
     worker_connections  4096;
+    use epoll;
+    multi_accept on;
 }
 
 http {
@@ -11,7 +14,7 @@ http {
     default_type      application/octet-stream;
     sendfile          on;
     keepalive_timeout 1200s;
-    keepalive_requests 4096;
+    keepalive_requests 100000;
 
     upstream lrs {
         server lrs:8000;
