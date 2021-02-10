@@ -23,5 +23,6 @@ COPY modified-fabfile.py /opt/lrs/ADL_LRS/fabfile.py
 
 # We'll need to run the setup
 COPY setup-lrs.sh /bin/setup-lrs.sh
+COPY test-lrs.sh /bin/test-lrs.sh
 
 CMD ["/bin/setup-lrs.sh"]
