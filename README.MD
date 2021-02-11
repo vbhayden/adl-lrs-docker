@@ -28,6 +28,7 @@ As this project is centered around Docker, there's very little setup required on
 1. `git clone https://github.com/vbhayden/adl-lrs-docker`
 1. `cd adl-lrs-docker`
 1. `sudo ./install-reqs.sh`
+1. `sudo ./init-ssl.sh localhost` (or your DNS)
 1. `sudo ./rebuild.sh`
 
 (optional) 
@@ -50,3 +51,15 @@ When the LRS is available (**which can take awhile**), you may wish to create a 
 sudo ./create-admin.sh
 ```
 This user only needs to be created **once**, as the Postgres container will persist through sessions.
+
+### Setting up SSL
+The project includes a basic Certbot container for generating a proper SSL certificate from a publicly available domain.  To do this, run:
+```
+sudo ./certbot/generate.sh <your-domain-name>
+```
+This will retrieve a certificate and restart your nginx container to use it.  
+
+**Note: If this fails for any reason, you will need to restore the temporary SSL cert using:**
+```
+sudo ./init-ssl.sh <your-domain-name>
+```
