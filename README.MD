@@ -6,6 +6,9 @@ If you have been struggling to stand up a local version of the ADL LRS, then thi
 
 This project uses a direct clone of official ADL repository with a single, minor modification to the `fabfile.py` for the sake of convenience when working with Docker.
 
+## Recent Updates 🌟
+The container structure has changed a bit, with the inclusion of Certbot, a more modern forwarding approach for the LRS itself, and a local network for the Docker Compose setup.  If you upgrade from an earlier version of this repo, you may need to do the SSL step shown below with the 🌟 symbol.
+
 ## Things to Note
 - **This project is in development and should be used with caution.**
 - **This project is not directly associated with the ADL Initiative.**
@@ -28,7 +31,7 @@ As this project is centered around Docker, there's very little setup required on
 1. `git clone https://github.com/vbhayden/adl-lrs-docker`
 1. `cd adl-lrs-docker`
 1. `sudo ./install-reqs.sh`
-1. `sudo ./init-ssl.sh localhost` (or your DNS)
+1. `sudo ./init-ssl.sh localhost` (🌟 NEW)
 1. `sudo ./rebuild.sh`
 
 (optional) 
