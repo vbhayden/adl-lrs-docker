@@ -5,10 +5,10 @@ ENV UWSGI_PIP_VERSION 2.0.13.1
 # Install our reqs
 RUN apt-get update && apt-get install -y git fabric \
 	python-setuptools python-dev \
-	libxml2-dev libxslt1-dev libpq-dev upstart-sysv gcc
+	libxml2-dev libxslt1-dev libpq-dev upstart-sysv gcc \
+	python-virtualenv
 
 RUN easy_install pip
-RUN pip install virtualenv
 
 # Clone the repo
 RUN mkdir /opt/lrs
