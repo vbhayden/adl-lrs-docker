@@ -81,6 +81,8 @@ services:
       - ./certbot/log:/var/log/letsencrypt
     depends_on:
       - nginx
+    networks:
+      - public
 
 networks:
   public: 
