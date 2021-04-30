@@ -12,7 +12,7 @@ RUN easy_install pip
 
 # Clone the repo
 RUN mkdir /opt/lrs
-RUN git clone https://github.com/adlnet/ADL_LRS /opt/lrs/ADL_LRS
+RUN git clone https://github.com/adlnet/ADL_LRS /opt/lrs/ADL_LRS -b LRS-2.0
 
 # Prepare the configuration
 COPY uwsgi/lrs_uwsgi.ini /etc/uwsgi/vassals/lrs_uwsgi.ini
