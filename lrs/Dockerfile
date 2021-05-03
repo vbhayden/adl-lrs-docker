@@ -11,7 +11,7 @@ RUN apt-get update && apt-get install -y git fabric \
 
 # Clone the repo
 RUN mkdir /opt/lrs
-RUN git clone https://github.com/adlnet/ADL_LRS /opt/lrs/ADL_LRS -b LRS-2.0
+RUN git clone https://github.com/adlnet/ADL_LRS /opt/lrs/ADL_LRS
 
 # Prepare the configuration
 COPY uwsgi/lrs_uwsgi.ini /etc/uwsgi/vassals/lrs_uwsgi.ini
